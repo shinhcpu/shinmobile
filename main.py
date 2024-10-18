@@ -12,6 +12,10 @@ def hello_world():
 def list():
     return render_template('list.html')
 
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
+
 if __name__ == '__main__':
     app.run()
 
