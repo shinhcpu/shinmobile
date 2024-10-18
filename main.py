@@ -12,6 +12,14 @@ def hello_world():
 def list():
     return render_template('list.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/ing')
+def ing():
+    return render_template('ing.html')
+
 if __name__ == '__main__':
     app.run()
 
