@@ -12,6 +12,14 @@ def hello_world():
 def list():
     return render_template('list.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
+@app.route('/ing')
+def ing():
+    return render_template('ing.html')
+  
 @app.route('/signup')
 def signup():
     return render_template('signup.html')
