@@ -1,92 +1,151 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>신현고등학교 로그인</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 10px; /* 추가: 모바일에서 여백을 추가 */
-        }
-        .login-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%; /* 수정: 모바일에 맞춰 100% 너비 */
-            max-width: 400px; /* 수정: 최대 너비 설정 */
-            box-sizing: border-box; /* 추가: 패딩 포함 */
-            display: flex;
-            flex-direction: column; /* 추가: 세로 정렬 */
-            align-items: center; /* 추가: 가운데 정렬 */
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px; /* 추가: 제목과 입력란 간격 */
-        }
-        .form-group {
-            width: 100%; /* 추가: 입력란 가로 폭 설정 */
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box; /* 추가: 패딩 포함 */
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #5cb85c;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #4cae4c;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 12px;
-            color: #777;
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>신현고등학교 로그인</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #f4f4f4;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			padding: 10px;
+			/* 추가: 모바일에서 여백을 추가 */
+		}
+
+		.login-container {
+			background-color: white;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			width: 100%;
+			/* 수정: 모바일에 맞춰 100% 너비 */
+			max-width: 400px;
+			/* 수정: 최대 너비 설정 */
+			box-sizing: border-box;
+			/* 추가: 패딩 포함 */
+			display: flex;
+			flex-direction: column;
+			/* 추가: 세로 정렬 */
+			align-items: center;
+			/* 추가: 가운데 정렬 */
+		}
+
+		h2 {
+			text-align: center;
+			color: #333;
+			margin-bottom: 20px;
+			/* 추가: 제목과 입력란 간격 */
+		}
+
+		.form-group {
+			width: 100%;
+			/* 추가: 입력란 가로 폭 설정 */
+			margin-bottom: 15px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			color: #555;
+		}
+
+		input[type="text"],
+		input[type="password"] {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+			/* 추가: 패딩 포함 */
+		}
+
+		button {
+			width: 100%;
+			padding: 10px;
+			background-color: #5cb85c;
+			border: none;
+			border-radius: 5px;
+			color: white;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #4cae4c;
+		}
+
+		.footer {
+			text-align: center;
+			margin-top: 10px;
+			font-size: 12px;
+			color: #777;
+		}
+	</style>
+	<script>
+		function show(id) {
+			document.getElementById(id).style.display = 'block';
+		}
+
+		function onLoginClicked(event) {
+			event.preventDefault(); // Prevent form submission
+
+			name = document.getElementById('username').value
+			pw = document.getElementById('password').value
+
+			if (name == '' || pw == '') {
+				return
+			}
+
+			fetch(`/try_login/${name}/${pw}`, {
+				method: 'GET',
+			})
+				.then(response => {
+					return response.json();
+				})
+				.then(data => {
+					if (data['return'] == false) {
+						document.getElementById("result_msg").textContent = "로그인이 실패했습니다."
+						document.getElementById("result_msg").textContent += data['reason']
+						show('result')
+					}
+					alert(data['return']);
+				});
+		}
+
+		// Event listener for form submission
+		document.addEventListener('DOMContentLoaded', () => {
+			document.getElementById('loginForm').addEventListener('submit', onLoginClicked);
+		});
+	</script>
 </head>
+
 <body>
-    <div class="login-container">
-        <h2>신현고등학교 로그인</h2>
-        <form>
-            <div class="form-group">
-                <label for="username">사용자 이름</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">로그인</button>
-        </form>
-        <div class="footer">
-            <p>© 2024 신현고등학교</p>
-        </div>
-    </div>
+	<div class="login-container">
+		<h2>신현고등학교 로그인</h2>
+		<span id="result" style="display: none;">
+			<h4 id="result_msg"></h4>
+		</span>
+		<form id="loginForm">
+			<div class="form-group">
+				<label for="username">사용자 이름</label>
+				<input type="text" id="username" name="username" required>
+			</div>
+			<div class="form-group">
+				<label for="password">비밀번호</label>
+				<input type="password" id="password" name="password" required>
+			</div>
+			<button type="submit">로그인</button>
+		</form>
+		<div class="footer">
+			<p>2024 CPU 신현고 모바일 홈페이지 데모</p>
+		</div>
+	</div>
 </body>
+
 </html>
