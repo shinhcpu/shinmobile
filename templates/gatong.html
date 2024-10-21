@@ -1,82 +1,93 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>신현고등학교 가정통신문 게시판</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 10px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .news-item {
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-            cursor: pointer;
-        }
-        .news-item:last-child {
-            border-bottom: none;
-        }
-        .news-title {
-            font-size: 18px;
-            color: #007bff;
-        }
-        .news-date {
-            font-size: 14px;
-            color: #777;
-        }
-        .news-content {
-            display: none; /* 기본적으로 내용 숨김 */
-            margin-top: 10px;
-            font-size: 16px;
-            color: #333;
-        }
-    </style>
-    <script>
-        function toggleContent(index) {
-            const content = document.querySelectorAll('.news-content')[index];
-            content.style.display = content.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>신현고등학교 가정통신문 게시판</title>
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #f4f4f4;
+			margin: 0;
+			padding: 10px;
+		}
+
+		h1 {
+			text-align: center;
+			color: #333;
+			margin-bottom: 20px;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: auto;
+			background-color: white;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.news-item {
+			border-bottom: 1px solid #ccc;
+			padding: 10px 0;
+			cursor: pointer;
+		}
+
+		.news-item:last-child {
+			border-bottom: none;
+		}
+
+		.news-title {
+			font-size: 18px;
+			color: #007bff;
+		}
+
+		.news-date {
+			font-size: 14px;
+			color: #777;
+		}
+
+		.news-content {
+			display: none;
+			/* 기본적으로 내용 숨김 */
+			margin-top: 10px;
+			font-size: 16px;
+			color: #333;
+		}
+	</style>
+	<script>
+		function toggleContent(index) {
+			const content = document.querySelectorAll('.news-content')[index];
+			content.style.display = content.style.display === 'none' ? 'block' : 'none';
+		}
+	</script>
 </head>
+
 <body>
-    <div class="container">
-        <h1>가정통신문 게시판</h1>
-        <div class="news-item" onclick="toggleContent(0)">
-            <div class="news-title">2024학년도 2학기 기말고사 안내</div>
-            <div class="news-date">2024-10-01</div>
-            <div class="news-content">2024학년도 2학기 중간고사는 없습니다. 존나 좋습니다.</div>
-        </div>
-        <div class="news-item" onclick="toggleContent(1)">
-            <div class="news-title">가을 안내</div>
-            <div class="news-date">2024-10-15</div>
-            <div class="news-content">2024년 가을은 없습니다. 학부모님께서는 참고하시기 바랍니다.</div>
-        </div>
-        <div class="news-item" onclick="toggleContent(2)">
-            <div class="news-title">학교폭력 실시</div>
-            <div class="news-date">2024-10-20</div>
-            <div class="news-content">학교폭력이 1월 25일에 실시됩니다. 모든 학생은 필참하여야 합니다.</div>
-        </div>
-        <div class="news-item" onclick="toggleContent(3)">
-            <div class="news-title">학교 폐업 일정 안내</div>
-            <div class="news-date">2024-10-25</div>
-            <div class="news-content">2024년 학교 폐업은 5월 1일부터 5월 3일까지 진행됩니다. 자세한 일정은 추후 공지됩니다.</div>
-        </div>
-    </div>
+	<div class="container">
+		<h1>가정통신문 게시판</h1>
+		<div class="news-item" onclick="toggleContent(0)">
+			<div class="news-title">2024학년도 2학기 기말고사 안내</div>
+			<div class="news-date">2024-10-01</div>
+			<div class="news-content" style="display: none;">2024학년도 2학기 중간고사는 없습니다. 좋습니다.</div>
+		</div>
+		<div class="news-item" onclick="toggleContent(1)">
+			<div class="news-title">가을 안내</div>
+			<div class="news-date">2024-10-15</div>
+			<div class="news-content" style="display: none;">2024년 가을은 없습니다. 학부모님께서는 참고하시기 바랍니다.</div>
+		</div>
+		<div class="news-item" onclick="toggleContent(2)">
+			<div class="news-title">ㅁㅁㅁ 실시</div>
+			<div class="news-date">2024-10-20</div>
+			<div class="news-content" style="display: none;">모든 학생은 필참하여야 합니다.</div>
+		</div>
+		<div class="news-item" onclick="toggleContent(3)">
+			<div class="news-title">학교 폐교 일정 안내</div>
+			<div class="news-date">2024-10-25</div>
+			<div class="news-content" style="display: none;">2024년 학교 폐교은 없습니다. 자세한 일정은 추후 공지됩니다.</div>
+		</div>
+	</div>
 </body>
+
 </html>

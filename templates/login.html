@@ -5,88 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>신현고등학교 로그인</title>
-	<style>
-		body {
-			font-family: 'Arial', sans-serif;
-			background-color: #f4f4f4;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-			margin: 0;
-			padding: 10px;
-			/* 추가: 모바일에서 여백을 추가 */
-		}
-
-		.login-container {
-			background-color: white;
-			padding: 20px;
-			border-radius: 10px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			width: 100%;
-			/* 수정: 모바일에 맞춰 100% 너비 */
-			max-width: 400px;
-			/* 수정: 최대 너비 설정 */
-			box-sizing: border-box;
-			/* 추가: 패딩 포함 */
-			display: flex;
-			flex-direction: column;
-			/* 추가: 세로 정렬 */
-			align-items: center;
-			/* 추가: 가운데 정렬 */
-		}
-
-		h2 {
-			text-align: center;
-			color: #333;
-			margin-bottom: 20px;
-			/* 추가: 제목과 입력란 간격 */
-		}
-
-		.form-group {
-			width: 100%;
-			/* 추가: 입력란 가로 폭 설정 */
-			margin-bottom: 15px;
-		}
-
-		label {
-			display: block;
-			margin-bottom: 5px;
-			color: #555;
-		}
-
-		input[type="text"],
-		input[type="password"] {
-			width: 100%;
-			padding: 10px;
-			border: 1px solid #ccc;
-			border-radius: 5px;
-			box-sizing: border-box;
-			/* 추가: 패딩 포함 */
-		}
-
-		button {
-			width: 100%;
-			padding: 10px;
-			background-color: #5cb85c;
-			border: none;
-			border-radius: 5px;
-			color: white;
-			font-size: 16px;
-			cursor: pointer;
-		}
-
-		button:hover {
-			background-color: #4cae4c;
-		}
-
-		.footer {
-			text-align: center;
-			margin-top: 10px;
-			font-size: 12px;
-			color: #777;
-		}
-	</style>
+	<link id="theme-stylesheet" rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
 	<script>
 		function show(id) {
 			document.getElementById(id).style.display = 'block';
@@ -113,8 +32,11 @@
 						document.getElementById("result_msg").textContent = "로그인이 실패했습니다."
 						document.getElementById("result_msg").textContent += data['reason']
 						show('result')
+					} else {
+						//로그인 성공
+						window.location.href = 'main';
 					}
-					alert(data['return']);
+					//alert(data['return']);
 				});
 		}
 
@@ -126,9 +48,9 @@
 </head>
 
 <body>
-	<div class="login-container">
+	<div class="container">
 		<h2>신현고등학교 로그인</h2>
-		<span id="result" style="display: none;">
+		<span id="result" style="display: none; color: red;">
 			<h4 id="result_msg"></h4>
 		</span>
 		<form id="loginForm">

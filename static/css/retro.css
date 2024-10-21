@@ -1,0 +1,54 @@
+body {
+	display: flex;
+	height: 100vh;
+	margin: 0;
+	padding: 10px;
+	/* 추가: 모바일에서 여백을 추가 */
+}
+
+.container {
+	background-color: white;
+	padding: 20px;
+	width: 100%;
+	/* 수정: 모바일에 맞춰 100% 너비 */
+	max-width: 400px;
+	/* 수정: 최대 너비 설정 */
+	box-sizing: border-box;
+	/* 추가: 패딩 포함 */
+	display: flex;
+	flex-direction: column;
+	/* 추가: 세로 정렬 */
+}
+
+h2 {
+	margin-bottom: 20px;
+	/* 추가: 제목과 입력란 간격 */
+}
+
+.form-group {
+	width: 100%;
+	/* 추가: 입력란 가로 폭 설정 */
+	margin-bottom: 15px;
+}
+
+label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	/* 추가: 패딩 포함 */
+}
+
+button {
+	padding: 10px;
+}
+
+.footer {
+	margin-top: 10px;
+	font-size: 12px;
+}
