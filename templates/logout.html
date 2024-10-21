@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>신현고등학교 로그인</title>
+	<link id="theme-stylesheet" rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+	<script>
+		function show(id) {
+			document.getElementById(id).style.display = 'block';
+		}
+		function logout() {
+			fetch(`/try_logout`, {
+				method: 'POST',
+			})
+				.then(async response => {
+					if (!response.ok) {
+						const errorData = await response.json();
+						throw new Error("");
+					}
+					return response.json();
+				})
+				.then(data => {
+					//로그아웃 성공
+					window.location.href = 'main';
+				}).catch(error => {
+					document.getElementById("result_msg").textContent = "로그아웃이 실패했습니다.(버그)"
+					show('result')
+				});
+		}
+
+		// Event listener for form submission
+		document.addEventListener('DOMContentLoaded', () => {
+			logout()
+		});
+	</script>
+</head>
+
+<body>
+	<h1>로그아웃중...</h1>
+	<span id="result" style="display: none; color: red;">
+		<h4 id="result_msg"></h4>
+	</span>
+</body>
+
+</html>
